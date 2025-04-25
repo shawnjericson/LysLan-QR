@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Trần Ngọc Anh Quyên - Sales Executive</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link
@@ -13,11 +13,21 @@
   <style>
     body {
       font-family: 'Roboto', sans-serif;
+      background-color: #B66D42;
       /* Dùng Roboto cho body */
     }
 
-    h1 {
-      color: #B66D42;
+    h2 {
+      display: flex;
+      /* Dùng Flexbox để căn chỉnh hình ảnh và chữ */
+      align-items: center;
+      /* Căn giữa hình ảnh và chữ theo chiều dọc */
+      justify-content: center;
+      /* Căn giữa chúng theo chiều ngang */
+      gap: 5px;
+      /* Khoảng cách giữa hình ảnh và chữ */
+      font-size: 22px;
+      color: black;
     }
 
     .card-header {
@@ -79,20 +89,52 @@
 
     .product-carousel {
       display: flex;
-      animation: moveImages 20s linear infinite; /* Di chuyển liên tục, giảm thời gian xuống 20s */
-      gap: 20px; /* Khoảng cách giữa các ảnh */
+      /* Ẩn các hình ảnh không trong phạm vi */
+      animation: moveImages 20s linear infinite;
+      /* Animation chạy cuốn chiếu */
+      gap: 10px;
+      /* Khoảng cách giữa các ảnh */
+      justify-content: flex-start;
+      /* Đảm bảo hình ảnh căn bên trái */
+    }
+
+    /* Điều chỉnh kích thước hình ảnh trong carousel */
+    .product-carousel img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
     }
 
     @keyframes moveImages {
       0% {
         transform: translateX(0);
       }
-      10% {
-        transform: translateX(0);
-      }
+
       100% {
-        transform: translateX(-100%); /* Di chuyển hết qua màn hình */
+        transform: translateX(-100%);
       }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 20px;
+        /* Điều chỉnh padding cho điện thoại */
+      }
+
+      .product-carousel img {
+        width: 150px;
+        /* Giảm kích thước ảnh trên màn hình nhỏ */
+      }
+    }
+
+    #logo {
+      width: 100px;
+      /* Điều chỉnh kích thước hình ảnh theo ý muốn */
+      height: auto;
+      /* Giữ tỷ lệ cho hình ảnh */
+      border-radius: 50%;
+      /* Làm cho góc hình ảnh mềm mại */
     }
   </style>
 </head>
@@ -103,14 +145,24 @@
       <div class="col-md-3">
         <div class="card">
           <div class="card-header">
-            <h1>Trần Ngọc Anh Quyên</h1>
+            <h2>
+              <img src="images/Cover.png" alt="cover" id="logo">
+              <b>Trần Ngọc Anh Quyên</b>
+            </h2>
             <p><strong>Sales Executive</strong> tại <strong>LysLan Chocolatier</strong></p>
           </div>
           <div class="card-body">
-            <p>📞 0988 050 409</p>
-            <p>✉️ sales@lyslan-chocolatier.vn</p>
-            <p>📍 3/107 Thu Khoa Huan, Binh Duong</p>
-            <p>🌐 <a href="https://lyslan-chocolatier.com/" target="_blank">lyslan-chocolatier.com</a></p>
+            <p><button class="btn btn-outline-primary btn-sm" onclick="window.location.href='tel:+84988050409'">
+                📞 Gọi ngay 0988 050 409
+              </button></p> <!-- Nút gọi điện -->
+            <p><button class="btn btn-outline-primary btn-sm"
+                onclick="window.location.href='mailto:sales@lyslan-chocolatier.vn'">
+                ✉️ Gửi email ngay
+              </button></p> <!-- Nút gửi email -->
+            <p><button class="btn btn-outline-primary btn-sm"
+                onclick="window.location.href='https://www.google.com/maps?q=3/107+Thu+Khoa+Huan,+Binh+Duong'">
+                📍 Chỉ đường đến Binh Duong
+              </button></p> <!-- Nút chỉ đường Google Maps -->
             <div>
               <a class="btn btn-sm btn-primary" href="https://lyslan-chocolatier.com/" target="_blank">Truy cập
                 website</a>
@@ -154,7 +206,7 @@
             </div>
           </div>
         </div>
-        <br><br><br>
+        <br><br>
         <div class="product-carousel">
           <img src="images/FS1.png" alt="bonbon" class="img-fluid">
           <img src="images/LH1.png" alt="pomelo desert" class="img-fluid">
